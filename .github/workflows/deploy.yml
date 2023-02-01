@@ -1,4 +1,4 @@
-name: remote ssh command
+name: deploy prod
 on: 
   push:
     branches:
@@ -8,7 +8,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: deploy on prod machine
+      - name: run deploy script on prod machine
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
