@@ -1,0 +1,18 @@
+name: remote ssh command
+on: 
+  push:
+    branches:
+      - "main"
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy on prod machine
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: bash scripts/deploy-portfolio.sh
